@@ -9,6 +9,7 @@ namespace Backend.Models.Todo
     {
         void Add(Todo todo);
         IEnumerable<Todo> GetTodos();
+        IEnumerable<Todo> GetTodosByType(string type);
         Todo Get(string id);
         Todo Delete(string id);
         void Update(Todo todo);

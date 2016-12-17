@@ -15,13 +15,13 @@ export class UserService {
   constructor(private http: Http) { }
 
   getUsers(): Promise<User[]> {
-    return this.http.get('/api/users')
+    return this.http.get('/api/user')
       .toPromise()
       .then(response => response.json() as User[])
       .catch(this.handleError);
   }
 
-  getUser(id: number): Promise<User> {
+  getUser(id: string): Promise<User> {
     return this.http.get('/api/user/' + id)
       .toPromise()
       .then(response => response.json() as User)
@@ -37,7 +37,7 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  deleteUser(id: number): Promise<void> {
+  deleteUser(id: string): Promise<void> {
     return this.http.delete('/api/user/' + id)
       .toPromise()
       .then(response => response.json())

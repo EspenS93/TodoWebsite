@@ -15,13 +15,13 @@ export class TodoService {
   constructor(private http: Http) { }
 
   getTodos(): Promise<Todo[]> {
-    return this.http.get('/api/todos')
+    return this.http.get('/api/todo')
       .toPromise()
       .then(response => response.json() as Todo[])
       .catch(this.handleError);
   }
 
-  getTodo(id: number): Promise<Todo> {
+  getTodo(id: string): Promise<Todo> {
     return this.http.get('/api/todo/' + id)
       .toPromise()
       .then(response => response.json() as Todo)
@@ -37,7 +37,7 @@ export class TodoService {
       .catch(this.handleError);
   }
 
-  deleteTodo(id: number): Promise<void> {
+  deleteTodo(id: string): Promise<void> {
     return this.http.delete('/api/todo/' + id)
       .toPromise()
       .then(response => response.json())

@@ -11,22 +11,29 @@ namespace Backend.Controllers
     [Route("/api/[controller]")]
     public class TodoController : Controller
     {
-        public TodoController(ITodoRepository todoItems)
+        public TodoController(ITodoRepository todos)
         {
-            TodoItems = todoItems;
+            Todos = todos;
         }
+        public WebsiteDbContext context { get; set; }
+        public ITodoRepository Todos { get; set; }
 
-        public ITodoRepository TodoItems { get; set; }
         [HttpGet]
         public IEnumerable<Todo> GetAll()
         {
-            return TodoItems.GetTodos();
+            return Todos.GetTodos();
+        }
+
+        [HttpGet("{type}", Name = "GetTodoByType")]
+        public IEnumerable<Todo> GetAllByType(string type)
+        {
+            return Todos.GetTodosByType(type);
         }
 
         [HttpGet("{id}", Name = "GetTodo")]
         public IActionResult GetTodo(string id)
         {
-            var todo = TodoItems.Get(id);
+            var todo = Todos.Get(id);
             if (todo == null)
             {
                 return NotFound();
@@ -41,8 +48,40 @@ namespace Backend.Controllers
             {
                 return BadRequest();
             }
-            TodoItems.Add(todo);
+            Todos.Add(todo);
             return CreatedAtRoute("GetTodo", new { id = todo.id }, todo);
+        }
+        [HttpDelete("{id}")]
+        public IActionResult Delete(string id)
+        {
+            var todo = Todos.Get(id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                Todos.Delete(id);
+                return new NoContentResult();
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(string id, [FromBody] Todo newTodo)
+        {
+            if (newTodo == null || newTodo.id != id)
+            {
+                return BadRequest();
+            }
+
+            var todo = Todos.Get(id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            Todos.Update(todo);
+            return new NoContentResult();
         }
     }
 

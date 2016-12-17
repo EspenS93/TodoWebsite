@@ -10,15 +10,17 @@ namespace Backend.Models.User
     {
         private static ConcurrentDictionary<string, User> _users =
               new ConcurrentDictionary<string, User>();
+        private WebsiteDbContext context;
 
-        public UserRepository()
+        private UserRepository(WebsiteDbContext Context)
         {
-            Add(new User { name = "item1" });
+            context = Context;
         }
 
         public IEnumerable<User> GetUsers()
         {
-            return _users.Values;
+            return context.Users.Select(u => new User { }).ToList();
+            //return _users.Values;
         }
 
         public void Add(User user)

@@ -13,10 +13,14 @@ namespace Backend.Models.Todo
 
         public TodoRepository()
         {
-            Add(new Todo { title = "item1" });
         }
 
         public IEnumerable<Todo> GetTodos()
+        {
+            return _todos.Values;
+        }
+
+        public IEnumerable<Todo> GetTodosByType(string type)
         {
             return _todos.Values;
         }
