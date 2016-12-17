@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Backend", "src\Backend\Backend.xproj", "{078B9697-392D-4758-B34C-CD39E13BA65B}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Backend", "src\Backend\Backend.xproj", "{90566E20-1883-45FD-87F7-F204F0842DCD}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Frontend", "src\Frontend\Frontend.xproj", "{49788620-BB57-4075-8441-45007F0C54F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,15 +20,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{078B9697-392D-4758-B34C-CD39E13BA65B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{078B9697-392D-4758-B34C-CD39E13BA65B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{078B9697-392D-4758-B34C-CD39E13BA65B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{078B9697-392D-4758-B34C-CD39E13BA65B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90566E20-1883-45FD-87F7-F204F0842DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90566E20-1883-45FD-87F7-F204F0842DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90566E20-1883-45FD-87F7-F204F0842DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90566E20-1883-45FD-87F7-F204F0842DCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49788620-BB57-4075-8441-45007F0C54F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49788620-BB57-4075-8441-45007F0C54F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49788620-BB57-4075-8441-45007F0C54F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49788620-BB57-4075-8441-45007F0C54F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{078B9697-392D-4758-B34C-CD39E13BA65B} = {FB96E176-39C7-4899-BC9F-7DF7826C8559}
+		{90566E20-1883-45FD-87F7-F204F0842DCD} = {FB96E176-39C7-4899-BC9F-7DF7826C8559}
+		{49788620-BB57-4075-8441-45007F0C54F7} = {FB96E176-39C7-4899-BC9F-7DF7826C8559}
 	EndGlobalSection
 EndGlobal

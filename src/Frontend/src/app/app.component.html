@@ -1,0 +1,15 @@
+<h1>{{title}}</h1>
+<nav>
+    <ul class="w3-navbar w3-light-grey w3-border w3-padding">
+        <li><a routerLink="/frontpage" class="w3-green" routerLinkActive="active">Frontpage</a></li>
+        <li *ngIf="user" class="w3-right"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+        <li *ngIf="!user" class="w3-right"><a routerLink="/frontpage" routerLinkActive="active">Hi User<!--{{user.name}}! --></a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>
+<footer class="w3-container w3-light-grey w3-border w3-padding">
+    <div>
+        <p class="w3-left">Made by Espen Sønnervig</p>
+        <p class="w3-right">Powered by ASP.NET Core, Angular 2 and W3.CSS</p>
+    </div>
+</footer>
