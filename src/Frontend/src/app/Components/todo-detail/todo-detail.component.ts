@@ -27,7 +27,6 @@ export class TodoDetailComponent implements OnInit {
   getDetails(): void {
     this.route.params.forEach((params: Params) => {
       let id: string = params['id'];
-      console.log(id);
       this.todoService
         .getTodo(id)
         .then(todo => this.todo = todo );

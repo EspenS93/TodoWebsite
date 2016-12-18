@@ -1,4 +1,6 @@
-<h2>Users</h2>
+<div class="w3-container w3-green">
+  <h2>Users</h2>
+</div>
 <div class="w3-container">
   <ul class="users w3-ul w3-hoverable w3-card-4 w3-quarter ">
     <li *ngFor="let user of users" [class.selected]="user === selectedUser" (click)="onSelect(user)">
@@ -8,10 +10,10 @@
   </ul>
 </div>
 <br>
-<button class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge"><a class="" routerLink="/newUser">Create a new User</a></button>
+<button class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge"><a routerLink="/newuser">Create a new User</a></button>
 <div *ngIf="selectedUser">
   <h2>
-    {{selectedUser.name | uppercase}} is my user
+    {{selectedUser.name | uppercase}} is selected
   </h2>
-  <button (click)="gotoTodos()">View Todos</button>
+  <button (click)="gotoTodos()">View Todos</button><button (click)="gotoUserDetails()">View user details</button>
 </div>

@@ -1,8 +1,14 @@
 <div *ngIf="user">
   <h2>{{user.name}} details!</h2>
   <div>
-    <label #a>email: </label>
-    <input placeholder="email" [(ngModel)]="user.email" />
+    <div>
+      <label>email: </label>
+      <label>{{user.email}}</label>
+    </div>
+    <div>
+      <label>Todos: </label>
+      <label>{{user.numberOfTodos}}</label>
+    </div>
   </div>
 
   <button (click)="goBack()">Back</button>

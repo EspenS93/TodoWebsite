@@ -1,12 +1,18 @@
 <h1>User todos</h1>
 <div class="w3-container">
-  <ul class="todos w3-ul w3-hoverable w3-card-4 w3-quarter ">
-    <li *ngFor="let todo of todos" [class.selected]="todo === selectedTodo" (click)="onSelect(todo)">
-      <span>{{todo.title}}</span>
-      <span>{{todo.type}}</span>
-      <span (click)="deleteTodo(todo); $event.stopPropagation()" class="w3-closebtn w3-margin-right w3-medium">&times;</span>
-    </li>
-  </ul>
+  <table class="w3-table-all w3-card-4 w3-hoverable">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Type</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let todo of todos" [class.selected]="todo === selectedTodo" (click)="onSelect(todo)">
+      <td>{{todo.title}}</td>
+      <td>{{todo.type}}</td>
+      <td><span (click)="deleteTodo(todo); $event.stopPropagation()" class="w3-closebtn w3-margin-right w3-medium">&times;</span></td>
+    </tr>
+  </table>
 </div>
 <br>
 <button class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge"><a class="" routerLink="/newTodo">Create a new Todo</a></button>
@@ -16,3 +22,4 @@
   </h2>
   <button (click)="gotoDetail()">View Todo</button>
 </div>
+

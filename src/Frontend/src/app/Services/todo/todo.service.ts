@@ -31,7 +31,7 @@ export class TodoService {
   getTodo(id: string): Promise<Todo> {
         return this.http.get('/api/todo/gettodo/'+id)
         .toPromise()
-        .then(response => response.json() as Todo)
+        .then(response => response.json()[0] as Todo)
         .catch(this.handleError);
     }
 

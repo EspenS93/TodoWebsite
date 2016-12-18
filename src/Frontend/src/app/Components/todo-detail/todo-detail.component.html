@@ -1,14 +1,22 @@
 <div *ngIf="todo">
   <h2>{{todo.title}} details!</h2>
   <div>
-    <label #a>Title: </label>
-    <input placeholder="title" [(ngModel)]="todo.title" />
-    <label #a>Description: </label>
-    <input placeholder="description" [(ngModel)]="todo.description" />
-    <label #a>Type: </label>
-    <input placeholder="type" [(ngModel)]="todo.type" />
-    <label #a>userID: </label>
-    <input placeholder="userID" [(ngModel)]="todo.userID" />
+    <div>
+      <label #a>Title: </label>
+      <label #b>{{todo.title}}</label>
+    </div>
+    <div>
+      <label #a>Description: </label>
+      <label #b>{{todo.description}}</label>
+    </div>
+    <div>
+      <label #a>Type: </label>
+      <label #b>{{todo.type}}</label>
+    </div>
+    <div>
+      <label #a>userID: </label>
+      <label #b>{{todo.userID}}</label>
+    </div>
   </div>
 
   <button (click)="goBack()">Back</button>

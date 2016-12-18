@@ -34,6 +34,9 @@ export class UsersComponent implements OnInit {
   gotoTodos(): void {
     this.router.navigate(['/user/', this.selectedUser.id]);
   }
+  gotoUserDetails(): void {
+    this.router.navigate(['/user/detail/', this.selectedUser.id]);
+  }
 
   deleteUser(user: User): void {
     this.userService
