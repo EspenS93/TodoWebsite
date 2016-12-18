@@ -11,29 +11,28 @@ namespace Backend.Controllers
     [Route("/api/[controller]")]
     public class TodoController : Controller
     {
-        public TodoController(ITodoRepository todos)
-        {
-            Todos = todos;
-        }
-        public WebsiteDbContext context { get; set; }
-        public ITodoRepository Todos { get; set; }
+        public WebsiteDbContext Todos;
 
-        [HttpGet]
+        public TodoController(WebsiteDbContext context)
+        {
+            Todos = context;
+        }
+
+        [HttpGet, Route("getAll")]
         public IEnumerable<Todo> GetAll()
         {
-            return Todos.GetTodos();
+            return Todos.Set<Todo>();
         }
-
-        [HttpGet("{type}", Name = "GetTodoByType")]
-        public IEnumerable<Todo> GetAllByType(string type)
+        [HttpGet("users/{id}")]
+        public IEnumerable<Todo> GetAllForUser(string id)
         {
-            return Todos.GetTodosByType(type);
+            return Todos.Todos.Where(t => id ==t.userID);
         }
 
-        [HttpGet("{id}", Name = "GetTodo")]
+        [HttpGet("gettodo/{id}")]
         public IActionResult GetTodo(string id)
         {
-            var todo = Todos.Get(id);
+            var todo = Todos.Set<Todo>().Where(t => id == t.id);
             if (todo == null)
             {
                 return NotFound();
@@ -48,23 +47,23 @@ namespace Backend.Controllers
             {
                 return BadRequest();
             }
-            Todos.Add(todo);
-            return CreatedAtRoute("GetTodo", new { id = todo.id }, todo);
+            Todos.Todos.Add(todo);
+            return Ok();
         }
-        [HttpDelete("{id}")]
+        /*[HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            var todo = Todos.Get(id);
+            var todo = Todos.Set<Todo>().Where(t => id == t.id);
             if (todo == null)
             {
                 return NotFound();
             }
             else
             {
-                Todos.Delete(id);
+                Todos.Todos.Remove(todo);
                 return new NoContentResult();
             }
-        }
+        }*/
 
         [HttpPut("{id}")]
         public IActionResult Update(string id, [FromBody] Todo newTodo)
@@ -74,13 +73,13 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
-            var todo = Todos.Get(id);
+            var todo = Todos.Set<Todo>().Where(t => id == t.id);
             if (todo == null)
             {
                 return NotFound();
             }
 
-            Todos.Update(todo);
+            Todos.Update(newTodo);
             return new NoContentResult();
         }
     }

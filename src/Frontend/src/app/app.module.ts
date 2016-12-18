@@ -12,6 +12,11 @@ import { FrontpageComponent } from './Components/frontpage/frontpage.component';
 import { UserService } from './Services/user/user.service';
 import { TodoService } from './Services/todo/todo.service';
 import { LoginService } from './Services/login/login.service';
+import { UserTodosComponent } from './Components/user-todos/user-todos.component';
+import { TodoDetailComponent } from './Components/todo-detail/todo-detail.component';
+import { NewUserComponent } from './Components/new-user/new-user.component';
+import { NewTodoComponent } from './Components/new-todo/new-todo.component';
+import { UserDetailComponent } from './Components/user-detail/user-detail.component';
 
 
 
@@ -21,7 +26,12 @@ import { LoginService } from './Services/login/login.service';
     UsersComponent,
     TodosComponent,
     LoginComponent,
-    FrontpageComponent
+    FrontpageComponent,
+    UserTodosComponent,
+    TodoDetailComponent,
+    NewUserComponent,
+    NewTodoComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,

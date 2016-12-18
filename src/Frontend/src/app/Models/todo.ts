@@ -3,5 +3,5 @@ export class Todo {
     title: string;
     description: string;
     type: string;
-    userid: number;
+    userID: number;
 }

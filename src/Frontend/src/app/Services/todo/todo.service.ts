@@ -15,18 +15,25 @@ export class TodoService {
   constructor(private http: Http) { }
 
   getTodos(): Promise<Todo[]> {
-    return this.http.get('/api/todo')
+    return this.http.get('/api/todo/getAll')
+      .toPromise()
+      .then(response => response.json() as Todo[])
+      .catch(this.handleError);
+  }
+
+  getUsersTodos(id: string): Promise<Todo[]> {
+    return this.http.get('/api/todo/users/' + id)
       .toPromise()
       .then(response => response.json() as Todo[])
       .catch(this.handleError);
   }
 
   getTodo(id: string): Promise<Todo> {
-    return this.http.get('/api/todo/' + id)
-      .toPromise()
-      .then(response => response.json() as Todo)
-      .catch(this.handleError);
-  }
+        return this.http.get('/api/todo/gettodo/'+id)
+        .toPromise()
+        .then(response => response.json() as Todo)
+        .catch(this.handleError);
+    }
 
   addTodo(newTodo: Todo): Promise<Todo> {
     var headers = new Headers();

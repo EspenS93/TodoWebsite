@@ -6,6 +6,11 @@ import { UsersComponent } from './Components/users/users.component'
 import { TodosComponent } from './Components/todos/todos.component'
 import { LoginComponent } from './Components/login/login.component'
 import { FrontpageComponent } from './Components/frontpage/frontpage.component'
+import { UserTodosComponent } from './Components/user-todos/user-todos.component';
+import { TodoDetailComponent } from './Components/todo-detail/todo-detail.component';
+import { UserDetailComponent } from './Components/user-detail/user-detail.component';
+import { NewUserComponent } from './Components/new-user/new-user.component';
+import { NewTodoComponent } from './Components/new-todo/new-todo.component';
 
 
 const appRoutes: Routes = [
@@ -23,12 +28,32 @@ const appRoutes: Routes = [
         component: UsersComponent
     },
     {
-        path: 'user/todos/:id',
+        path: 'user/:id',
+        component: UserTodosComponent
+    },
+    {
+        path: 'user/detail/:id',
+        component: UserDetailComponent
+    },
+    {
+        path: 'todos',
         component: TodosComponent
+    },
+    {
+        path: 'todo/:id',
+        component: TodoDetailComponent
     },
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'newuser',
+        component: NewUserComponent
+    },
+    {
+        path: 'newtodo',
+        component: NewTodoComponent
     }
 
 ];

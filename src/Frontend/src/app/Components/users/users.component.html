@@ -1,15 +1,17 @@
 <h2>Users</h2>
-<ul class="users">
-  <li *ngFor="let user of users; let i = index" [class.selected]="user === selectedUser" (click)="onSelect(user)">
-      <span class="badge">{{i+1}}</span>
+<div class="w3-container">
+  <ul class="users w3-ul w3-hoverable w3-card-4 w3-quarter ">
+    <li *ngFor="let user of users" [class.selected]="user === selectedUser" (click)="onSelect(user)">
       <span>{{user.name}}</span>
-      <button class="delete" (click)="deleteUser(user); $event.stopPropagation()">x</button>
-  </li>
-</ul>
+      <span (click)="deleteUser(user); $event.stopPropagation()" class="w3-closebtn w3-margin-right w3-medium">&times;</span>
+    </li>
+  </ul>
+</div>
+<br>
+<button class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge"><a class="" routerLink="/newUser">Create a new User</a></button>
 <div *ngIf="selectedUser">
   <h2>
     {{selectedUser.name | uppercase}} is my user
   </h2>
   <button (click)="gotoTodos()">View Todos</button>
 </div>
-<a routerLink="/newUser">Create a new User</a>

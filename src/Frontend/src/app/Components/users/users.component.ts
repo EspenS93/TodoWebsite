@@ -32,7 +32,7 @@ export class UsersComponent implements OnInit {
       .then(users => this.users = users);
   }
   gotoTodos(): void {
-    this.router.navigate(['/user/todos', this.selectedUser.id]);
+    this.router.navigate(['/user/', this.selectedUser.id]);
   }
 
   deleteUser(user: User): void {

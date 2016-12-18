@@ -24,7 +24,7 @@ export class UserService {
   getUser(id: string): Promise<User> {
     return this.http.get('/api/user/' + id)
       .toPromise()
-      .then(response => response.json() as User)
+      .then(response => response.json().data as User)
       .catch(this.handleError);
   }
 

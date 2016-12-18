@@ -21,7 +21,6 @@ namespace Backend.Controllers
         public IEnumerable<User> GetAll()
         {
             return Users.Set<User>();
-            //return Users.Users.Select(u => new User { id = u.id, name = u.name }).ToList();
         }
 
         [HttpGet("{id}", Name = "GetUser")]
