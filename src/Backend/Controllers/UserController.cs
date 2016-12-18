@@ -26,7 +26,7 @@ namespace Backend.Controllers
         [HttpGet("{id}", Name = "GetUser")]
         public IActionResult GetUser(string id)
         {
-            var user = Users.Set<User>().Where(t => id == t.id);
+            var user = Users.Set<User>().Find(id);
             if (user == null)
             {
                 return NotFound();
@@ -42,12 +42,13 @@ namespace Backend.Controllers
                 return BadRequest();
             }
             Users.Users.Add(user);
+            Users.SaveChanges();
             return Ok();
         }
-        /*[HttpDelete("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            var user = Users.Set<User>().Where(t => id == t.id);
+            var user = Users.Set<User>().Find(id);
             if (user == null)
             {
                 return NotFound();
@@ -55,9 +56,10 @@ namespace Backend.Controllers
             else
             {
                 Users.Users.Remove(user);
+                Users.SaveChanges();
                 return new NoContentResult();
             }
-        }*/
+        }
 
         [HttpPut("{id}")]
         public IActionResult Update(string id, [FromBody] User newUser)
@@ -74,6 +76,7 @@ namespace Backend.Controllers
             }
 
             Users.Update(newUser);
+            Users.SaveChanges();
             return new NoContentResult();
         }
     }

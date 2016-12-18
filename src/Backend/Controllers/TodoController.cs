@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Backend.Models.Todo;
+using Microsoft.EntityFrameworkCore;
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Backend.Controllers
@@ -48,12 +49,14 @@ namespace Backend.Controllers
                 return BadRequest();
             }
             Todos.Todos.Add(todo);
+            Todos.SaveChanges();
             return Ok();
         }
-        /*[HttpDelete("{id}")]
+
+        [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            var todo = Todos.Set<Todo>().Where(t => id == t.id);
+            var todo = Todos.Set<Todo>().Find(id);
             if (todo == null)
             {
                 return NotFound();
@@ -61,9 +64,10 @@ namespace Backend.Controllers
             else
             {
                 Todos.Todos.Remove(todo);
+                Todos.SaveChanges();
                 return new NoContentResult();
             }
-        }*/
+        }
 
         [HttpPut("{id}")]
         public IActionResult Update(string id, [FromBody] Todo newTodo)
@@ -73,13 +77,14 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
-            var todo = Todos.Set<Todo>().Where(t => id == t.id);
+            var todo = Todos.Set<Todo>().Find(id);
             if (todo == null)
             {
                 return NotFound();
             }
 
             Todos.Update(newTodo);
+            Todos.SaveChanges();
             return new NoContentResult();
         }
     }
