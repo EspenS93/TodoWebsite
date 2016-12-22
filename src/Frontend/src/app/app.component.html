@@ -4,12 +4,12 @@
         <li><a routerLink="/frontpage" class="w3-green" routerLinkActive="active">Frontpage</a></li>
         <li><a routerLink="/users" class="w3-green" routerLinkActive="active">Users</a></li>
         <li><a routerLink="/todos" class="w3-green" routerLinkActive="active">Todos</a></li>
-        <li *ngIf="user" class="w3-right"><a routerLink="/login" routerLinkActive="active">Login</a></li>
-        <li *ngIf="!user" class="w3-right"><a routerLink="/frontpage" routerLinkActive="active">Hi User<!--{{user.name}}! --></a></li>
+        <li *ngIf="!auth.authenticated()" class="w3-right"><button class="btn btn-primary btn-margin" (click)="auth.login()">Log In</button></li>
+        <li *ngIf="auth.authenticated()" class="w3-right"><button class="btn btn-primary" (click)="auth.logout()">Log Out</button></li>
     </ul>
 </nav>
 <div>
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </div>
 <footer class="w3-container w3-light-grey w3-border w3-padding">
     <div>

@@ -11,7 +11,7 @@ import { TodoDetailComponent } from './Components/todo-detail/todo-detail.compon
 import { UserDetailComponent } from './Components/user-detail/user-detail.component';
 import { NewUserComponent } from './Components/new-user/new-user.component';
 import { NewTodoComponent } from './Components/new-todo/new-todo.component';
-
+import { AuthGuard } from './auth.guard'
 
 const appRoutes: Routes = [
     {
@@ -25,7 +25,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'users',
-        component: UsersComponent
+        component: UsersComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'user/:id',
@@ -55,6 +56,10 @@ const appRoutes: Routes = [
         path: 'newtodo',
         component: NewTodoComponent
     }
-
 ];
+
+export const appRoutingProviders: any[] = [
+  AuthGuard
+];
+
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

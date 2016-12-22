@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { routing } from './app.routing';
+import { routing,appRoutingProviders } from './app.routing';
 import { UsersComponent } from './Components/users/users.component';
 import { TodosComponent } from './Components/todos/todos.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -17,6 +17,8 @@ import { TodoDetailComponent } from './Components/todo-detail/todo-detail.compon
 import { NewUserComponent } from './Components/new-user/new-user.component';
 import { NewTodoComponent } from './Components/new-todo/new-todo.component';
 import { UserDetailComponent } from './Components/user-detail/user-detail.component';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { Auth } from './Services/auth/auth.service'
 
 
 
@@ -42,7 +44,10 @@ import { UserDetailComponent } from './Components/user-detail/user-detail.compon
   providers: [
     UserService,
     TodoService,
-    LoginService
+    LoginService,
+    AUTH_PROVIDERS,
+    appRoutingProviders,
+    Auth
   ],
   bootstrap: [AppComponent]
 })

@@ -22,8 +22,8 @@ namespace Backend
             services.AddMvc();
             var connection = @"Server=YOSHI\SQLEXPRESS;Database=TodoWebsite;Trusted_Connection=True;";
             services.AddDbContext<WebsiteDbContext>(options => options.UseSqlServer(connection));
-            services.AddSingleton<ITodoRepository, TodoRepository>();
-            services.AddSingleton<IUserRepository, UserRepository>();
+            //services.AddSingleton<ITodoRepository, TodoRepository>();
+            //services.AddSingleton<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
